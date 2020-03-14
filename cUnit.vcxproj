@@ -147,11 +147,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="cunit.h" />
+    <ClInclude Include="ctest.h" />
     <ClInclude Include="pch.h" />
+    <ClInclude Include="TestCourier.h" />
+    <ClInclude Include="TestPartialResult.h" />
+    <ClInclude Include="TestPrinter.h" />
+    <ClInclude Include="TestRegistry.h" />
+    <ClInclude Include="TestResult.h" />
+    <ClInclude Include="TestSet.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="cunit.cpp" />
+    <ClCompile Include="ctest.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

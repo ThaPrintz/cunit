@@ -1,14 +1,17 @@
 #pragma once
 
-#ifndef LIBCUNIT
-#define LIBCUNIT
+#ifndef CTEST_H
+#define CTEST_H
 
-#include <string>
-
-namespace cunit
+class ctest
 {
+public:
 	class TestSet;
-	class TestDataPack;
+	class TestCourier;
+	class TestRegistry;
+	class TestResult;
+	class TestPartialResult;
+	class TestPrinter;
 
 	class Test
 	{
@@ -20,40 +23,37 @@ namespace cunit
 		virtual void PreTest();
 		virtual void RunTest();
 
-		void SetNextTest(Test* next);
+		void SetNextTest(Test * next);
 		Test* GetNext() const;
 
 		const std::string TestSetID() const;
 		const std::string TestID() const;
 
 		//Test set members
-		void AssignTestSet(TestSet* testset);
+		void AssignTestSet(TestSet * testset);
 		TestSet* GetTestSet() const;
 
 		//TestData members
-		virtual void AssignDataRepo(TestDataPack* datarepo);
-		TestDataPack* GetDataRepo() const;
+		virtual void SetPartialResult(TestPartialResult * datarepo);
+		TestPartialResult* getPartialResult() const;
 
-		int FailCount();
-		int SuccessCount();
-		int ErrorCount();
+		int FailCount() const;
+		int SuccessCount() const;
+		int ErrorCount() const;
 	protected:
 		std::string _testsetname;
 		std::string _testname;
 
 		TestSet* _testset;
-		TestDataPack* _testdatarepo;
+		TestPartialResult* _testpartresult;
 		Test* _nexttest;
 
 		int fails;
 		int success;
 		int errors;
 	};
+
+	enum testRet {failure, success, error};
 };
 
-
-
-
-
-
-#endif //LIBCUNIT
+#endif //CTEST
